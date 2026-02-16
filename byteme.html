@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ByteMe - AI наставник для программистов. Сайт в разработке.">
+    <link rel="shortcut icon" href="img/logo1.png" type="image/x-icon">
+    <title>ByteMe · Скоро запуск</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/byteme.css">
+</head>
+<body>
+    <div class="grid-overlay"></div>
+    
+    <div class="container">
+        <div class="construction-card">
+            <div class="logo">
+                <div class="logo-icon">
+                <img src="img/logo.png" alt="" width="60px">
+                </div>
+                <span class="logo-text">ByteMe</span>
+                <span class="logo-badge">Alpha</span>
+            </div>
+
+            <h1>
+                Сайт в <br>
+                <span class="gradient-text">разработке</span>
+            </h1>
+            
+            <p class="subtitle">
+                Мы создаём AI-наставника, который поможет тебе стать хорошим разработчиком. 
+                Нейросеть, геймификация и сообщество — всё будет.
+            </p>
+
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-dots">
+                        <span class="terminal-dot red"></span>
+                        <span class="terminal-dot yellow"></span>
+                        <span class="terminal-dot green"></span>
+                    </div>
+                    <span class="terminal-title">build.log</span>
+                    <div class="terminal-status">
+                        <span class="status-dot"></span>
+                        <span class="status-text">compiling...</span>
+                    </div>
+                </div>
+                <div class="terminal-body" id="terminalBody">
+                    <div class="terminal-line" style="animation-delay: 0.1s;">
+                        <span class="prompt">$</span>
+                        <span class="command">git clone byteme-ai/backend</span>
+                    </div>
+                    <div class="terminal-line" style="animation-delay: 0.3s;">
+                        <span class="prompt">></span>
+                        <span class="success">✓ Репозиторий склонирован</span>
+                    </div>
+                    <div class="terminal-line" style="animation-delay: 0.5s;">
+                        <span class="prompt">$</span>
+                        <span class="command">npm run build:ai-model</span>
+                    </div>
+                    <div class="terminal-line" style="animation-delay: 0.7s;">
+                        <span class="prompt">></span>
+                        <span class="warning">⚠️ Тренировка нейросети... 68%</span>
+                    </div>
+                    <div class="terminal-line" style="animation-delay: 0.9s;">
+                        <span class="prompt">$</span>
+                        <span class="command">docker-compose up -d</span>
+                    </div>
+                    <div class="terminal-line" style="animation-delay: 1.1s;">
+                        <span class="prompt">></span>
+                        <span class="output">Сервер поднимается...</span>
+                    </div>
+                    <div class="terminal-line" style="animation-delay: 1.3s;">
+                        <span class="prompt">></span>
+                        <span class="error">⚠️ Порт 3000 занят ожиданием тебя</span>
+                    </div>
+                    <div class="terminal-line" style="animation-delay: 1.5s;">
+                        <span class="prompt">$</span>
+                        <span class="command">waiting for launch...</span>
+                        <span class="cursor"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-section">
+                <div class="progress-label">
+                    <span>Готовность к запуску</span>
+                    <span class="gradient-text">5%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">🧠</div>
+                    <div class="feature-title">AI-наставник</div>
+                    <div class="feature-desc">Умные подсказки и ревью кода</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎮</div>
+                    <div class="feature-title">Геймификация</div>
+                    <div class="feature-desc">Уровни, ачивки, рейтинги</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">💬</div>
+                    <div class="feature-title">Сообщество</div>
+                    <div class="feature-desc">Общение и совместные проекты</div>
+                </div>
+            </div>
+
+            <div class="footer-note">
+                <span><span class="code-symbol">&lt;ByteMe/&gt;</span> · 2026
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const terminalBody = document.getElementById('terminalBody');
+        const extraLines = [
+            { prompt: '>', text: '🔨 Сборка интерфейса...', type: 'output' },
+            { prompt: '>', text: '🤖 Обучение модели на Python-задачах', type: 'warning' },
+            { prompt: '$', text: 'npm run test:all', type: 'command' },
+            { prompt: '>', text: '✅ Все тесты пройдены!', type: 'success' },
+            { prompt: '>', text: '✨ Ждём только тебя...', type: 'output' }
+        ];
+
+        let lineIndex = 0;
+        setInterval(() => {
+            if (lineIndex < extraLines.length) {
+                const line = extraLines[lineIndex];
+                const newLine = document.createElement('div');
+                newLine.className = 'terminal-line';
+                newLine.style.animationDelay = '0s';
+                
+                let typeClass = '';
+                if (line.type === 'success') typeClass = 'success';
+                else if (line.type === 'warning') typeClass = 'warning';
+                else if (line.type === 'output') typeClass = 'output';
+                else typeClass = 'command';
+                
+                newLine.innerHTML = `
+                    <span class="prompt">${line.prompt}</span>
+                    <span class="${typeClass}">${line.text}</span>
+                `;
+                
+                if (terminalBody.children.length > 8) {
+                    terminalBody.removeChild(terminalBody.children[1]);
+                }
+                
+                terminalBody.appendChild(newLine);
+                lineIndex++;
+            } else {
+                lineIndex = 0;
+            }
+        }, 8000);
+    </script>
+</body>
+</html>
